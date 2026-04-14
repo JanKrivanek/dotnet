@@ -57,14 +57,14 @@
     </ItemGroup>
 
     <XmlPeek
-      XmlInputPath="@(_ManifestFile)"
+      XmlInputPath="%(_ManifestFile.Identity)"
       Query="/Manifest/Blob[@DotNetReleaseShipping='true' and @Visibility='External']/@PipelineArtifactPath"
       Condition="Exists('$(_CurrentManifestsDirectory)') and '@(_ManifestFile)' != ''">
       <Output TaskParameter="Result" ItemName="_ManifestRelativePath" />
     </XmlPeek>
 
     <XmlPeek
-      XmlInputPath="@(_ManifestFile)"
+      XmlInputPath="%(_ManifestFile.Identity)"
       Query="/Manifest/Package[@DotNetReleaseShipping='true' and @Visibility='External']/@PipelineArtifactPath"
       Condition="Exists('$(_CurrentManifestsDirectory)') and '@(_ManifestFile)' != ''">
       <Output TaskParameter="Result" ItemName="_ManifestRelativePath" />
