@@ -100,7 +100,7 @@ steps:
     $version = $nupkg.BaseName -replace '^Microsoft\.DotNet\.SignCheckTask\.'
 
     $dotnetExt = if ($IsWindows) { 'cmd' } else { 'sh' }
-    & "$(Build.SourcesDirectory)/eng/common/dotnet.$dotnetExt" build `
+    & "$(Build.SourcesDirectory)/eng/common/dotnet.$dotnetExt" build /t:Execute `
       "$(Build.SourcesDirectory)/eng/signing-validation.proj" `
       /p:ArtifactDownloadDirectory="${{ parameters.signCheckFilesDirectory }}" `
       /p:SourceBranch="$(Build.SourceBranch)" `

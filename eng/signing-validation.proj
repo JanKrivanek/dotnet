@@ -11,7 +11,7 @@
     <SignCheckLog Condition="'$(SignCheckLog)' == ''">$(OutputLogsDirectory)\signcheck.log</SignCheckLog>
     <SignCheckErrorLog Condition="'$(SignCheckErrorLog)' == ''">$(OutputLogsDirectory)\signcheck.error.log</SignCheckErrorLog>
     <SignCheckResultsXmlFile Condition="'$(SignCheckResultsXmlFile)' == ''">$(OutputLogsDirectory)\signcheck.xml</SignCheckResultsXmlFile>
-    <SignCheckInputDir Condition="'$(SignCheckInputDir)' == ''">$(BaseIntermediateDirectory)SignCheckFiles</SignCheckInputDir>
+    <SignCheckInputDir Condition="'$(SignCheckInputDir)' == ''">$(BaseIntermediateOutputPath)SignCheckFiles</SignCheckInputDir>
   </PropertyGroup>
 
   <ItemGroup>
@@ -101,7 +101,8 @@
     <Move SourceFiles="@(_FilesToMove->'%(SourcePath)')" DestinationFiles="@(_FilesToMove->'%(DestinationPath)')" />
   </Target>
 
-  <Target Name="GenerateIntermediateSignCheckExclusionsFile" Condition="'$(IsDacSigningBranch)' == 'true'">
+
+  <Target Name="GenerateIntermediateSignCheckExclusionsFile" Condition="'$(IsDacSigningBranch)' != 'true'">
     <PropertyGroup>
       <IntermediateSignCheckExclusionsFile>$(BaseIntermediateOutputPath)SignCheckExclusionsFile.txt</IntermediateSignCheckExclusionsFile>
     </PropertyGroup>
