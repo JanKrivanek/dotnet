@@ -548,6 +548,7 @@ jobs:
       parameters:
         enableMicrobuild: true
         enableMicrobuildForMacAndLinux: true
+        microbuildPluginVersion: 1.1.1242 # TEMP
         ${{ if ne(parameters.signType, 'Real') }}:
           microbuildUseESRP: false
 

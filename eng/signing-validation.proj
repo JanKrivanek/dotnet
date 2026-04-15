@@ -101,7 +101,6 @@
     <Move SourceFiles="@(_FilesToMove->'%(SourcePath)')" DestinationFiles="@(_FilesToMove->'%(DestinationPath)')" />
   </Target>
 
-
   <Target Name="GenerateIntermediateSignCheckExclusionsFile" Condition="'$(IsDacSigningBranch)' != 'true'">
     <PropertyGroup>
       <IntermediateSignCheckExclusionsFile>$(BaseIntermediateOutputPath)SignCheckExclusionsFile.txt</IntermediateSignCheckExclusionsFile>
