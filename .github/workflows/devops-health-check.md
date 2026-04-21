@@ -155,6 +155,7 @@ permissions:
   contents: read
   actions: read
   issues: read
+  pull-requests: read
 
 imports:
   - ../aw/shared/devops-health.lock.md
